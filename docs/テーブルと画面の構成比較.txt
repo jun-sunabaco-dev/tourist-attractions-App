@@ -1,0 +1,7 @@
+id　		テーブル内部の連番		データの登録時に採番
+name		タイトル
+description	説明
+category	地域名(今治・寝屋川・富山）
+image_path	画像のパス
+address		
+creat_date	データの登録・更新日時		データの登録時にセット
