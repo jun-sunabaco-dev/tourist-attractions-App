@@ -13,7 +13,6 @@
         <h2>{{ spot.name }}</h2>
         <p>{{ spot.description }}</p>
         <p>カテゴリ: {{ spot.category }}</p>
-        <p>住所: {{ spot.address }}</p>
         {% if spot.image_path %}
         <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}" width="200">
         {% endif %}
