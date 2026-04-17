@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>観光名所を登録</title>
+</head>
+<body>
+    <h1>観光名所を登録</h1>
+    <a href="{{ url_for('index') }}">一覧に戻る</a>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div>
+            <label>名前</label><br>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>説明</label><br>
+            <textarea name="description"></textarea>
+        </div>
+        <div>
+            <label>カテゴリ</label><br>
+            <input type="text" name="category">
+        </div>
+        <div>
+            <label>住所</label><br>
+            <input type="text" name="address">
+        </div>
+        <div>
+            <label>画像</label><br>
+            <input type="file" name="image">
+        </div>
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>
