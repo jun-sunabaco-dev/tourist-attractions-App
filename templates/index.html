@@ -33,6 +33,7 @@
 
     .card-img {
       height: calc(33vw - 20px);
+      object-fit: contain;
       background: #ccc;
     }   
 
@@ -50,8 +51,8 @@
 </div>
 
 <!-- スライド -->
-<div class="slide">
-  <img src="{{ url_for('static', filename='img/uploads/tateyama_kansui1.jpg') }}" ...>
+<div class="slide" style="display:none;">
+  <img src="{{ url_for('static', filename='img/uploads/tateyama_kansui1.jpg') }}">
 </div>
 <!-- <div class="slide">
   スライドショー
@@ -68,7 +69,7 @@
     <div class="card">
       {% if spot.image_path %}
         <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="height:calc(33vw - 20px); object-fit:cover;">
+             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
@@ -91,7 +92,7 @@
     <div class="card">
       {% if spot.image_path %}
         <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="height:calc(33vw - 20px); object-fit:cover;">
+             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
@@ -114,7 +115,7 @@
     <div class="card">
       {% if spot.image_path %}
         <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="height:calc(33vw - 20px); object-fit:cover;">
+             class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
