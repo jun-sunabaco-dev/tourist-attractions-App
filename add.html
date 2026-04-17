@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>写真登録</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f5f5f5; }
+    .header {
+      background: #7b3f00;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-box {
+      background: white;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 400px;
+    }
+    .btn-custom {
+      background: #00a8c6;
+      color: white;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="header">
+  <h5>三都フォト歩き</h5>
+  <a href="index.html" class="text-white">HOME</a>
+</div>
+
+<!-- フォーム -->
+<div class="form-box">
+  <h5>新しい写真を登録</h5>
+
+  <form>
+    <div class="mb-3">
+      <label>タイトル（10字以内がおすすめ）</label>
+      <input type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>説明（20字以内がおすすめ）</label>
+      <input type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>写真</label>
+      <input type="file" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-custom">登録</button>
+  </form>
+</div>
+
+</body>
+</html>
