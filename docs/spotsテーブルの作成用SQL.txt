@@ -1,0 +1,17 @@
+--spotsテーブルの作成用SQLです
+
+--既に最初にお送りしていたSQLでspotsテーブルを作成していた場合は
+--まず、DROPを実行してください
+
+DROP TABLE IF EXISTS spots;
+
+
+
+CREATE TABLE spots (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    description TEXT,
+    category TEXT NOT NULL CHECK (category IN ('今治', '富山', '寝屋川')),
+    image_path TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
