@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>観光名所一覧</title>
+</head>
+<body>
+    <h1>観光名所一覧</h1>
+    <a href="{{ url_for('add') }}">新規登録</a>
+
+    {% for spot in spots %}
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+        <h2>{{ spot.name }}</h2>
+        <p>{{ spot.description }}</p>
+        <p>カテゴリ: {{ spot.category }}</p>
+        <p>住所: {{ spot.address }}</p>
+        {% if spot.image_path %}
+        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}" width="200">
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
