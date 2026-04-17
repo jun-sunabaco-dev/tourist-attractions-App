@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///spots.db'
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = 'static/img/uploads'
 
 db = SQLAlchemy(app)
 
