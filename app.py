@@ -16,9 +16,8 @@ class Spot(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text)
-    category = db.Column(db.Text)
+    category = db.Column(db.Text, nullable=False)
     image_path = db.Column(db.Text)
-    address = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.now)
 
 # 一覧表示
@@ -34,7 +33,6 @@ def add():
         name = request.form['name']
         description = request.form['description']
         category = request.form['category']
-        address = request.form['address']
 
         # 画像の保存
         image = request.files['image']
@@ -45,7 +43,6 @@ def add():
             name=name,
             description=description,
             category=category,
-            address=address,
             image_path=image.filename
         )
         db.session.add(spot)
