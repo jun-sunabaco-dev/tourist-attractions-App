@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
@@ -23,7 +24,7 @@ class Spot(db.Model):
 # 一覧表示
 @app.route('/')
 def index():
-    spots = Spot.query.all()  # 全件取得
+    spots = Spot.query.all()
     return render_template('index.html', spots=spots)
 
 # 登録フォーム表示 & 保存
@@ -34,17 +35,28 @@ def add():
         description = request.form['description']
         category = request.form['category']
 
-        # 画像の保存
         image = request.files['image']
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
+        relative_path = None
 
-        # DBに保存
+        if image and image.filename:
+            filename = secure_filename(image.filename)
+
+            # DBに保存する相対パス
+            relative_path = os.path.join('img/uploads', filename).replace('\\', '/')
+
+            # 実際に保存する物理パス
+            save_path = os.path.join('static', relative_path)
+
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            image.save(save_path)
+
         spot = Spot(
             name=name,
             description=description,
             category=category,
-            image_path=image.filename
+            image_path=relative_path
         )
+
         db.session.add(spot)
         db.session.commit()
 
