@@ -1,22 +1,137 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>観光名所一覧</title>
+  <meta charset="UTF-8">
+  <title>三都フォト歩き</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+  <style>
+    body { background: #f5f5f5; }
+    .header {
+      background: #7b3f00;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .slide {
+      height: 200px;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px;
+    }
+    
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-img {
+      height: calc(33vw - 20px);
+      object-fit: contain;
+      background: #ccc;
+    }   
+
+    .card-body {
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body>
-    <h1>観光名所一覧</h1>
-    <a href="{{ url_for('add') }}">新規登録</a>
 
-    {% for spot in spots %}
-    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
-        <h2>{{ spot.name }}</h2>
-        <p>{{ spot.description }}</p>
-        <p>カテゴリ: {{ spot.category }}</p>
-        {% if spot.image_path %}
-        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}" width="200">
-        {% endif %}
+<!-- ヘッダー -->
+<div class="header">
+  <h5>三都フォト歩き</h5>
+  <a href="{{ url_for('add') }}" class="text-white">新しい写真を投稿</a>
+</div>
+
+<!-- スライド -->
+<div class="slide" style="display:none;">
+  <img src="{{ url_for('static', filename='img/uploads/tateyama_kansui1.jpg') }}">
+</div>
+<!-- <div class="slide">
+  スライドショー
+</div> -->
+
+<p class="text-center">海と川と山、今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
+
+<div class="container">
+
+<h5 class="mt-4 text-center">Imabari</h5>
+<div class="row">
+  {% for spot in spots if spot.category == '今治' %}
+  <div class="col-4">
+    <div class="card">
+      {% if spot.image_path %}
+        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
+             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
+      {% else %}
+        <div class="card-img"></div>
+      {% endif %}
+      <div class="card-body">
+        <p>{{ spot.name }}</p>
+        <small>{{ spot.description }}</small>
+      </div>
     </div>
-    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-muted ms-2">まだ登録された写真がありません</p>
+  {% endfor %}
+</div>
+  <!-- <p class="text-center">▼もっと見る</p> -->
+
+<h5 class="mt-4 text-center">Neyagawa</h5>
+<div class="row">
+  {% for spot in spots if spot.category == '寝屋川' %}
+  <div class="col-4">
+    <div class="card">
+      {% if spot.image_path %}
+        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
+             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
+      {% else %}
+        <div class="card-img"></div>
+      {% endif %}
+      <div class="card-body">
+        <p>{{ spot.name }}</p>
+        <small>{{ spot.description }}</small>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted ms-2">まだ登録された写真がありません</p>
+  {% endfor %}
+</div>
+  <!-- <p class="text-center">▼もっと見る</p> -->
+
+<h5 class="mt-4 text-center">Toyama</h5>
+<div class="row">
+  {% for spot in spots if spot.category == '富山' %}
+  <div class="col-4">
+    <div class="card">
+      {% if spot.image_path %}
+        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
+             class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+      {% else %}
+        <div class="card-img"></div>
+      {% endif %}
+      <div class="card-body">
+        <p>{{ spot.name }}</p>
+        <small>{{ spot.description }}</small>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted ms-2">まだ登録された写真がありません</p>
+  {% endfor %}
+</div>
+  <!-- <p class="text-center">▼もっと見る</p> -->
+
+</div>
+
 </body>
 </html>

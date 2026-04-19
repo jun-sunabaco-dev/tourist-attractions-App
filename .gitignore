@@ -1,2 +1,5 @@
 .DS_Store
 app.db
+spots.db
+static/img/uploads/*
+!static/img/uploads/.gitkeep
