@@ -17,26 +17,6 @@
       justify-content: space-between;
       margin-bottom: 20px;
     }
-    /* .slide {
-      height: 200px;
-      background: #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px;
-    } */
-    .carousel-img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      background: center;;
-    }
-
-    .card {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
 
     .card-img {
       height: calc(33vw - 20px);
@@ -44,9 +24,152 @@
       background: #ccc;
     }   
 
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
     .card-body {
       flex-grow: 1;
+      padding: 28px;
     }
+
+    .spot-title {
+      font-size: 24px;
+      line-height: 1.4;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    .spot-description {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    .catch-copy {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.8;
+      color: #5a2d00;
+      margin: 28px auto 36px;
+      letter-spacing: 0.04em;
+    }
+
+    .catch-copy span {
+      display: inline-block;
+      padding: 0.2em 0.5em;
+      border-bottom: 3px solid #d9b382;
+    }
+
+    .header {
+      background: #7b3f00;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .header h5 {
+      margin: 0;
+    }
+
+    .header a {
+      white-space: nowrap;
+    }
+    
+  .carousel-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .custom-caption {
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    text-align: right;
+  }
+
+  .custom-caption p {
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .catch-copy {
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 20px 12px 28px;
+    }
+
+    .container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .card-img-top {
+      height: 200px !important;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .spot-title {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .spot-description {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h5.text-center {
+      font-size: 18px;
+    }
+
+    .carousel-img {
+      height: 220px;
+    }
+
+    .custom-caption {
+      bottom: 6%;
+      left: 4%;
+      right: 4%;
+      width: auto;
+      text-align: right;
+    }
+
+    .custom-caption p {
+      font-size: 15px;
+      padding: 8px 12px;
+      line-height: 1.4;
+      border-radius: 10px;
+    }
+
+  }
+
   </style>
 </head>
 <body>
@@ -57,10 +180,12 @@
   <a href="{{ url_for('add') }}" class="text-white">新しい写真を投稿</a>
 </div>
 
-<!-- スライドショー -->
-<div id="photoCarousel" class="carousel slide mx-3 mt-4 mb-4" data-bs-ride="carousel">
+<!-- スライド -->
+  <div id="photoCarousel" class="carousel slide mx-3 mt-4 mb-4"
+      data-bs-ride="carousel"
+      data-bs-interval="3000"
+      data-bs-wrap="true">
 
-  <!-- インジケーター（下の丸） -->
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1"></button>
@@ -69,38 +194,43 @@
     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="4"></button>
   </div>
 
-  <!-- スライド本体 -->
   <div class="carousel-inner">
-
     <div class="carousel-item active">
-      <img src="/static/img/sakura_matsukawa.jpeg" class="carousel-img">
-
-      <div class="carousel-caption text-end">
-        <p class="bg-dark bg-opacity-50 px-3 py-1 rounded">
-          今治〜寝屋川〜富山、三つのまちの景色に会いに行こう
-        </p>
+      <img src="/static/img/common/slide0.jpg" class="carousel-img">
+      <div class="carousel-caption custom-caption">
+        <p>今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
       </div>
     </div>
 
     <div class="carousel-item">
-      <img src="/static/img/tateyama_kansui1.jpg" class="carousel-img">
+      <img src="/static/img/common/slide1.jpg" class="carousel-img">
+      <div class="carousel-caption custom-caption">
+        <p>今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
+      </div>
     </div>
 
     <div class="carousel-item">
-      <img src="/static/img/toyamajou_snow1.jpg" class="carousel-img">
+      <img src="/static/img/common/slide2.jpg" class="carousel-img">
+      <div class="carousel-caption custom-caption">
+        <p>今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
+      </div>
     </div>
 
     <div class="carousel-item">
-      <img src="/static/img/tateyama_kansui1.jpg" class="carousel-img">
+      <img src="/static/img/common/slide3.jpg" class="carousel-img">
+      <div class="carousel-caption custom-caption">
+        <p>今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
+      </div>
     </div>
 
     <div class="carousel-item">
-      <img src="/static/img/tateyama_umi.jpeg" class="carousel-img">
+      <img src="/static/img/common/slide4.jpg" class="carousel-img">
+      <div class="carousel-caption custom-caption">
+        <p>今治〜寝屋川〜富山、三つのまちの景色に会いに行こう</p>
+      </div>
     </div>
-
   </div>
 
-  <!-- 左右ボタン -->
   <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
@@ -111,24 +241,23 @@
 
 </div>
 
-<!-- <p class="text-center">海と川と山、今治〜寝屋川〜富山三つのまちの景色に会いに行こう</p> -->
-
 <div class="container">
 
-<h5 class="mt-4 text-center text-secondary">Imabari</h5>
+<h4 class="mt-4 text-center">Imabari</h4>
 <div class="row">
   {% for spot in spots if spot.category == '今治' %}
-  <div class="col-4">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
     <div class="card">
       {% if spot.image_path %}
-        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
+        <img src="{{ url_for('static', filename=spot.image_path) }}"
+          class="card-img-top"
+          style="width: 100%; height: 220px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
       <div class="card-body">
-        <p>{{ spot.name }}</p>
-        <small>{{ spot.description }}</small>
+        <p class="spot-title">{{ spot.name }}</p>
+        <p class="spot-description">{{ spot.description }}</p>
       </div>
     </div>
   </div>
@@ -138,21 +267,22 @@
 </div>
   <!-- <p class="text-center">▼もっと見る</p> -->
 
-<h5 class="mt-4 text-center text-secondary">Neyagawa</h5>
+<h4 class="mt-4 text-center">Neyagawa</h4>
 <div class="row">
   {% for spot in spots if spot.category == '寝屋川' %}
-  <div class="col-4">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
     <div class="card">
       {% if spot.image_path %}
-        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="width: 100%; height: 80px; object-fit: cover;">
+        <img src="{{ url_for('static', filename=spot.image_path) }}"
+          class="card-img-top"
+          style="width: 100%; height: 220px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
-      <div class="card-body">
-        <p>{{ spot.name }}</p>
-        <small>{{ spot.description }}</small>
-      </div>
+        <div class="card-body">
+          <p class="spot-title">{{ spot.name }}</p>
+          <p class="spot-description">{{ spot.description }}</p>
+        </div>
     </div>
   </div>
   {% else %}
@@ -161,20 +291,21 @@
 </div>
   <!-- <p class="text-center">▼もっと見る</p> -->
 
-<h5 class="mt-4 text-center text-secondary">Toyama</h5>
+<h4 class="mt-4 text-center">Toyama</h4>
 <div class="row">
   {% for spot in spots if spot.category == '富山' %}
-  <div class="col-4">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
     <div class="card">
       {% if spot.image_path %}
-        <img src="{{ url_for('static', filename='img/uploads/' + spot.image_path) }}"
-             class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+        <img src="{{ url_for('static', filename=spot.image_path) }}"
+            class="card-img-top"
+            style="width: 100%; height: 220px; object-fit: cover;">
       {% else %}
         <div class="card-img"></div>
       {% endif %}
       <div class="card-body">
-        <p>{{ spot.name }}</p>
-        <small>{{ spot.description }}</small>
+        <p class="spot-title">{{ spot.name }}</p>
+        <p class="spot-description">{{ spot.description }}</p>
       </div>
     </div>
   </div>
@@ -185,6 +316,8 @@
   <!-- <p class="text-center">▼もっと見る</p> -->
 
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
